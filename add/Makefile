@@ -7,20 +7,19 @@ FPIC = -fpic
 SHARE = -shared
 RM = rm -rf 
 
+#HEADER_PATH = -I./
+LIBPATH = /home/zcj/winCode/mylib/
 SRCS = $(wildcard ./*.cpp)
 OBJS = $(patsubst %.cpp, %.o, $(SRCS))
 
-HEADER_PATH = -I./add
-LIB_PATH = -L /home/zcj/winCode/mylib/
-LIBS = -laddlib
-
-TARGET = testDemo
+TARGET = libaddlib.so
 
 $(TARGET):$(OBJS)
-	$(CXX) $^ -o $@ $(LIB_PATH) $(LIBS)
+	$(CXX) $^ $(SHARE) $(FPIC) -o $@
+	mv $(TARGET) $(LIBPATH)
 
 $(OBJS):%.o : %.cpp
-	$(CXX) $(CFLAGS) $(HEADER_PATH) $< -o $@ 
+	$(CXX) $(FPIC) $(CFLAGS) $< -o $@ 
 
 clean:
-	$(RM) $(TARGET) $(OBJS)
+	$(RM) $(LIBPATH)$(TARGET) $(OBJS)

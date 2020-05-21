@@ -4,7 +4,10 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += main.cpp \
-    testlib.cpp
 
 HEADERS += \
-    testlib.h
+
+include (./add/add.pri)
+include (./divide/divide.pri)
+include (./multiply/multiply.pri)
+include (./subtract/subtract.pri)
