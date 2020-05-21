@@ -9,6 +9,7 @@ class AddLib
 {
 public:
     AddLib();
+
     ~AddLib();
 public:
     int myAdd(int a, int b);

@@ -7,18 +7,22 @@ FPIC = -fpic
 SHARE = -shared
 RM = rm -rf 
 
+TARGET = libdivlib.so
 LIBPATH = ../lib/
+
 SRCS = $(wildcard ./*.cpp)
 OBJS = $(patsubst %.cpp, %.o, $(SRCS))
+DEP = $(OBJS:%.o=%.d)
+LIB = $(LIBPATH)$(TARGET)
 
-TARGET = libdivlib.so
-
-$(TARGET):$(OBJS)
+$(LIB):$(OBJS)
 	$(CXX) $^ $(SHARE) $(FPIC) -o $@
-	mv $(TARGET) $(LIBPATH)
+#   mv $(TARGET) $(LIBPATH)
 
 $(OBJS):%.o : %.cpp
 	$(CXX) $(FPIC) $(CFLAGS) $< -o $@ 
 
+-include $(DEP)
+
 clean:
-	$(RM) $(LIBPATH)$(TARGET) $(OBJS)
+	$(RM) $(LIB) $(OBJS)

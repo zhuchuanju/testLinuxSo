@@ -10,6 +10,7 @@ RM = rm -rf
 #SOURCES:=$(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
 SRCS = $(wildcard ./*.cpp)
 OBJS = $(patsubst %.cpp, %.o, $(SRCS))
+DEP = $(OBJS:%.o=%.d)
 
 HEADER_PATH = -I./add \
 			  -I./divide \
@@ -69,3 +70,5 @@ $(OBJS):%.o:%.cpp
 # 主程序清理过程
 $(CLEAR_TARGET):
 	$(RM) $(CREATE_TARGET) $(OBJS)
+	
+-include $(DEP)
