@@ -11,7 +11,7 @@ LIBPATH = ../lib/
 SRCS = $(wildcard ./*.cpp)
 OBJS = $(patsubst %.cpp, %.o, $(SRCS))
 
-TARGET = libaddlib.so
+TARGET = libdivlib.so
 
 $(TARGET):$(OBJS)
 	$(CXX) $^ $(SHARE) $(FPIC) -o $@

@@ -7,11 +7,12 @@ FPIC = -fpic
 SHARE = -shared
 RM = rm -rf 
 
+#HEADER_PATH = -I./
 LIBPATH = ../lib/
 SRCS = $(wildcard ./*.cpp)
 OBJS = $(patsubst %.cpp, %.o, $(SRCS))
 
-TARGET = libaddlib.so
+TARGET = libmullib.so
 
 $(TARGET):$(OBJS)
 	$(CXX) $^ $(SHARE) $(FPIC) -o $@
