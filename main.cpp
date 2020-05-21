@@ -1,17 +1,17 @@
 #include <iostream>
 
-#if defined(__cplusplus)
-extern "C" {
+//#if defined(__cplusplus)
+//extern "C" {
 
-//#include "testlib.h"
+////#include "testlib.h"
+//#include "addlib.h"
+
+//}
+//#else
+
+//#endif
+
 #include "addlib.h"
-
-}
-#else
-
-#endif
-
-
 
 using namespace std;
 
